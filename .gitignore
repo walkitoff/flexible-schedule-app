@@ -33,6 +33,8 @@ build/
 .vscode/
 
 
+
+############ added #########################
 # local environment variables
 .env
 
