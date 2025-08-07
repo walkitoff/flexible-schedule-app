@@ -1,8 +1,6 @@
 package com.shiftplanner.flexible_schedule.model;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +9,19 @@ import lombok.Setter;
 @Entity
 @Table(name = "role_permission")
 public class RolePermission {
+
     @EmbeddedId
     private RolePermissionId id;
 
-    //TODO [Reverse Engineering] generate columns from DB
+    @ManyToOne
+    @MapsId("roleId")
+    @JoinColumn(name = "role_id", insertable = false, updatable = false)
+    private Role role;
+
+    @ManyToOne
+    @MapsId("permissionId")
+    @JoinColumn(name = "permission_id", insertable = false, updatable = false)
+    private Permission permission;
+
+
 }
